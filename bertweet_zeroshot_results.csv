@@ -1,0 +1,3 @@
+Model,Dataset,Accuracy,Macro F1
+BERTweet (zero-shot),HateXPlain,0.3718,0.2488
+BERTweet (zero-shot),TweetEval,0.5023,0.3446
