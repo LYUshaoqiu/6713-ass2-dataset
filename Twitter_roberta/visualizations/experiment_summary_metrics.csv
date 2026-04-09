@@ -1,0 +1,5 @@
+Experiment,Dataset,Mapping,Accuracy,Macro F1,Weighted F1
+HateXplain binary,HateXplain,binary,0.4587,0.423,0.3955
+HateXplain hateonly,HateXplain,hateonly,0.6352,0.4891,0.5931
+TweetEval binary,TweetEval,binary,0.6076,0.6074,0.6055
+TweetEval hateonly,TweetEval,hateonly,0.6603,0.6598,0.6645
