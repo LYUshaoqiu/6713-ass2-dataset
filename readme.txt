@@ -4,6 +4,7 @@ hate/ofensive/normal，对应的值分别为2，1，0
 CsV的第一列是评论内容 ，第二列是维度打分。
 
 model 具体参数的下载链接（大约1GB），下载后将里面两个文件夹saved_model_roberta_hx和saved_model_roberta_te放入和predict.py相同的文件夹内
+链接： https://drive.google.com/drive/folders/1sTdeJnDs5u6KIKBRIk1DSLhYbojrhvRD?usp=sharing
 使用方法：
 单条文本预测：
 python predict.py --text "I hate all minorities"
