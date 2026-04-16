@@ -26,3 +26,7 @@ Prediction: Hate  (confidence: 0.9231)
 
 
 注意：如果步下载模型需要先运行 step3_twitter_roberta_finetune.py 训练完成并保存模型到 saved_model_roberta_hx/ 或 saved_model_roberta_te/ 后，predict.py 才能正常使用。
+
+
+
+自建数据集已经准备并且分类好了
