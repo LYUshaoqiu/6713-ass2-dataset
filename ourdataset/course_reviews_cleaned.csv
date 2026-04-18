@@ -1,0 +1,354 @@
+comment,label
+"COMP1511 is a fundamental introductory compulsory course for computer majors at UNSW, primarily teaching C language programming, basic algorithmic thinking, and standard methods for simple program design. The overall pace of the course is relatively tight (9 weeks + flex), but the content is arranged progressively from simple to more advanced (from the most basic C syntax to slightly complex data structures like structs and linked lists). It is suitable for students with little programming background to build a foundation, but those with absolutely no prior experience may feel some pressure in the mid-to-late stages of the semester. The strength of this course lies in its strong practical focus; labs, assignments, and autotests help students quickly develop the mindset of ""writing code—debugging—improving."" Although the content is introductory, it places significant demands on programming standards, logical expression, and problem decomposition skills, so the improvement after completing the course is quite noticeable. It also cultivates a habit of writing comments, laying the groundwork for subsequent courses, group collaboration, and code maintenance. The difficulty lies in the fact that the concepts may seem few early on, but once students delve into arrays, functions, pointers, structs, linked lists, and more complex program design, many begin to struggle. If students only attend lectures without practicing coding themselves, it’s easy to fall behind later. The importance of regular lab exercises becomes evident here. Additionally, assignments provide students with an opportunity to complete a small project over a longer period (2–3 weeks), accounting for about 30%–40% of the course grade. The assignment guide breaks down the entire project into smaller parts, guiding students to progressively complete the main portion of the project (usually around 80%; the remaining parts may involve content from later courses and are intended for students with some programming ability or those aiming for grades of 75+ or 85+). Students can choose to complete assignment content selectively based on their own abilities and the grade distribution. Finally, the exam typically accounts for 40%–50% of the course grade and consists of around 10 programming questions covering almost all data structures and functions learned throughout the semester. Students are generally required to complete at least 40% of the exam content (hurdle, which may include specified questions). One question might test a single data structure, while subsequent questions may involve the application of two or more data structures within a single problem. The last one or two questions may involve content from later courses and are intended for students with some programming ability or those aiming for grades of 75+ or 85+. Overall, COMP1511 is a highly foundational and valuable training course. It not only teaches C language syntax but, more importantly, helps students develop the fundamental mindset of computer science. This course is crucial for subsequent studies in data structures, algorithms, and systems-related courses.",0
+"COMP4920 is a course focused on professional ethics and technical ethics, with an emphasis not on programming implementation but on discussing ethical judgments, sense of responsibility, and the social impacts of technology applications in the computer science field. This course covers ethical theories, moral judgments, and the application of these frameworks to real-world computer science case analyses. The course is characterized by its strong emphasis on critical thinking and high demands for writing and argumentation, making it more suitable for students who have already taken multiple technical courses and wish to move beyond ""how to build systems"" to consider ""why we do it this way and whether it is responsible."" Its value lies not in improving coding skills but in helping students develop a more comprehensive professional perspective.
+
+Overall, COMP4920 is more like a course that helps computer science students fill gaps in professional ethics and critical thinking. For students aiming to enter the software, AI, or broader technology industries, it encourages a shift from focusing solely on technical implementation to considering the responsibilities and impacts behind technical decisions.
+
+Now, moving from the technical summary to some personal feelings: This course primarily covers computer ethics and morality. It doesn’t require any coding, but students have to write two essays and deliver a final presentation. Students need to choose a topic and read academic materials provided by the instructor or find relevant online sources to support their arguments. The process is extremely painful and torturous for students who aren’t particularly interested in this area. If the tutor is from a non-computer science background (e.g., philosophy), it can be even more torturous. Non-computer science tutors might provide ""less accurate"" guidance or assistance when it comes to topics or questions outside their expertise (such as specialized computer science knowledge), and they may grill your essay from their own professional perspective and way of thinking, which is especially torturous for students who haven’t systematically trained in logical reasoning. Additionally, the grading is very stingy and subjective. Basically, if the tutor is good, your grade won’t be too bad, but if the tutor is bad, you’re basically screwed.",0
+test,0
+Fucking awesome.,0
+Fucked up the registration *2,0
+"DSP Digital Signal Processing. This course invites Dolby employees to give career planning lectures, which is very helpful for undergraduates to understand industry information. The course is divided into: lab assignments, project 30%, midterm 20%, final 50%. The labs teach you how to complete the project; the project involves writing a real-time frequency divider/gain controller similar to Qianqian Jingting using MATLAB. With MATLAB experience, it takes about two days to finish everything, and the difficulty is not high. The midterm is moderately difficult—I didn’t prepare and scored 66. The exam calculations are not complicated; the numbers are all nicely arranged. This course is highly practical and extremely helpful for one’s career. Strongly recommended.",0
+"Fundamentals of Accounting: Midterm 25%, group presentation 15 minutes 15%, class attendance and participation 10%, final exam 50%. This introductory accounting course is very simple; you don't need to attend lectures and can self-study. Use the weekly tutorials as review. Even if you encounter unreliable teammates for the group presentation, the impact is minimal. In my group of five, only three showed up, and I suffered from kidney stones for several weeks, taking several sick leaves, yet I lost less than 10 points for the participation grade. For the final, I reviewed three sets of practice exams and scored full marks. This became the only course in my undergraduate studies where I scored above 90. Highly recommend this course—generous grading and time-efficient.",0
+"Starting off with high intensity right away, 6.",0
+"fuck it, dropping out",1
+"It's okay, acceptable. I learned the practice of developing database applications and the theory behind relational database systems. It also provided a brief overview of the technologies used to implement database management systems, as well as the past, present, and future of database systems. Big data resources are crucial for the operation of almost all significant modern computer applications. Therefore, understanding how to manage big data resources is clearly very important for the IT industry.",0
+"The course arrangement for COMP2521 is meticulously designed, with specific themes and learning objectives each week. The course employs various formats such as lectures, videos, lab exercises, quizzes, and assignments to help students comprehensively grasp the knowledge of data structures and algorithms.  
+Week 1: Introduction and Recursion  
+Theme: Course introduction, recursion concepts, algorithm analysis.  
+Resources: Video lectures, YouTube videos, code examples.  
+Week 2: Sorting Algorithms  
+Theme: Introduction to sorting algorithms, basic sorting, divide-and-conquer sorting, non-comparison sorting.  
+Resources: Multiple video lectures, YouTube videos, code, and visualization tools.  
+Week 3: Abstract Data Types  
+Theme: Binary Search Trees.  
+Resources: Video lectures, YouTube videos, code, and visualization tools.  
+Week 4: Balanced Binary Trees  
+Theme: Balanced binary trees, AVL trees.  
+Resources: Video lectures, YouTube videos, code, and visualization tools.  
+Week 5: Graph Basics and Traversal  
+Theme: Basic concepts of graphs, graph traversal algorithms.  
+Resources: Video lectures, YouTube videos, code, and visualization tools.  
+Week 6: Flexible Learning Week  
+Provides additional time for students to review and delve deeper into the material.  
+Week 7: Directed Graph Algorithms  
+Theme: Dijkstra's algorithm, minimum spanning trees.  
+Resources: Video lectures, YouTube videos, code, and visualization tools.  
+Week 8: Hash Tables  
+Theme: Hash tables, applications of hash tables.  
+Resources: Video lectures, YouTube videos, code, and visualization tools.  
+Week 9: Priority Queues, Heaps, and Tries  
+Theme: Priority queues, heaps, Trie trees.  
+Resources: Video lectures, YouTube videos, code, and visualization tools.  
+Week 10: Course Review and Exam  
+Review the entire semester's content to prepare for the final exam.  
+🎯 Learning Outcomes  
+Through studying COMP2521, you will be able to:  
+Analyze and measure algorithm performance.  
+Select and develop appropriate data structures and algorithms for problems.  
+Reason about the effectiveness of data structures and algorithms.  
+Package data structures and algorithms as abstract data types.  
+Develop complex software systems using the C language.",0
+"The Black teacher catches students slacking off in tutorials, and you can't skip because attendance is recorded. Learning is impossible to grasp, and the exam has a 50% hurdle. My group members were super reliable, otherwise I would've been screwed. Thank you, awesome group members—I'll love you forever. Thanks for helping write the report.",0
+"It's okay. The only downside is not being able to get in touch with the group members. We were almost done with the task, and every time we tried to reach him, he was out partying. The next day, he’d still be hungover and usually just read the messages and replied with nonsense. He always submitted his part at the last hour, purely testing our patience—what an episode.",0
+"When I found out that after I finished the course, the midterm and final exams for this class were changed to in-person in the following semester, I was overjoyed. I scored an HD thanks to high-quality ChatGPT, and just thinking about how everyone now has to seriously prepare for the final exams makes me want to laugh. Highly recommended, hahahaha, I really am gloating. Folks, if you enjoy in-person exams, go for it.",0
+"After I finished the course, they added a hurdle to this class, and it's 40%. Who can understand, my final grade originally wouldn't have passed this hurdle, lol, those who come after can suffer. Good luck, the fail rate for this course is skyrocketing, hahahahahahahahahahahahahahahaha.",0
+"This is a mandatory level 3 course for EE majors. It is purely project-based with no lectures. It is recommended to find a teammate in advance. Work in pairs of two, and grab a project early—good projects get snatched up quickly. Not particularly difficult. The final exam is a 2D take-home report, much of which can be directly copied from your final report. Key emphasis: Find a good teammate!",0
+"A required course in EE. Torsten is notorious as a final exam killer. The final exam questions change every year, with different datasheets each time, making past papers completely useless as reference. It heavily tests your understanding of the material learned throughout the course. For this class, you can only pray for luck. P.S. Find a good lab partner.",0
+"German 1, quizzes allow flipping through lecture slides, basically free points. The final is an oral exam, a Q&A with a classmate. Prepare a self-introduction; the teacher will give you three questions and three answers, you just need to be able to say them. Not difficult.",0
+"EE sophomore required course. Aron Michael (has he changed his name to W something now?) is a well-known slacker teacher in UNSW EE. His teaching is not up to par, the final exam is just slightly modified from previous ones, assignments come with previous answers, and you can casually email to request assignment extensions (group extensions). Anyway, the teacher is mediocre but it's easy to score well.",0
+"Super watered-down course. If you want to pursue a Ph.D., you can take this course, provided you are relatively rich. This Chinese professor basically accepts any student who applies, but don’t expect him to pay you a stipend. Moreover, the professor’s academic level is subpar. If you are super wealthy and willing to self-fund a Ph.D. but struggling to find a way in, you can go to him. Although I feel that if you’re already self-funding a Ph.D., almost anyone else would be a better choice than him.",0
+"It's okay, focusing on Stirling engines, this project can be said to be very interesting and not difficult. If you're struggling to find a suitable elective course, if you can take this one, go for it.",0
+"Very creative, always up-to-date with current events.",0
+"The teacher is humorous and passionate, but if students can't get it, it can be hard to keep up.",0
+"This course is an introductory programming class. For students with no programming experience in high school (like me), getting a distinction is not difficult, but achieving a high distinction requires a significant time investment, especially on the assignments. In the semester I took it, this course had two assignments. To pass them all, you need to put in considerable time and effort. Cramming at the last minute will only get you about 80% done. So I highly recommend taking the assignments seriously. My lecturer was a very interesting teacher. His teaching in comp1511 sparked my interest in programming. I'm not sure if he's still teaching this course.",0
+"Highly recommend this course. This course teaches analog circuits, including BJTs, op-amps, and various calculations for designing analog circuit performance. The instructor provides corresponding formulas for different circuit types, so you can just plug them in when solving problems. The problems aren't difficult, but they do require time to understand. The key to success in assignments is to know a friend who has taken this course and is very patient and generous, because you can get past assignment questions and answers from them, which might be very helpful for your assignment. Assignments may not repeat exact questions, so you need to spend some time working through and verifying them yourself. The final exam will have repeated questions, so it's essential to understand the lab, quizzes, and assignment problems to have a chance at getting an HD. Students who enjoy circuit analysis will likely like this course, while those who don't might find the calculations (constructing equations) challenging. Therefore, I think this course is suitable for forming study groups with a few classmates to learn together; you can cross-check the calculation parts to ensure the answers are correct. The professor for this course is Aron Woldeghiorgis. He is very nice, answers questions carefully, and I recommend this professor.",0
+"COMP9021 is great for solidifying programming knowledge. After taking it, you’ll have a clearer idea of how to solve problems, structure code, and debug. However, it’s not very friendly for career switchers into coding—it requires repeated practice, and if your logical training is weak, you might feel like you’ve got it but not completely. It’s one of those courses that’s “painful while learning but very useful afterward.” It’s not an easy course, but as a foundational IT subject, the quality is solid.",0
+"This course covers fundamental data structures in C, algorithm analysis, graph algorithms, trees, and other key topics. The structure is solid and the content is core, but the pace is fast. It's best to have a foundation in C, otherwise it can be challenging. There is also a lot of assessment content, so the final exam can be quite stressful.",0
+"The course content is about biomolecules, extremely basic, basically just a waste of time and money.",0
+"It's about the application of electronic technology in medical devices, very practical and you can actually learn something.",0
+The homework is a bit excessive; the self-study portion far outweighs the in-class sessions.,0
+"The teacher's assignment requirements are vague, requiring repeated confirmation, and they are constantly changing.",0
+General,0
+Difficult,0
+Good,0
+Not bad,0
+"The language I learned had fewer than 10 pages of results on Google at the time. There was no prior experience or courses available for self-study; I could only rely on the language's manual for learning. Moreover, this language was extremely cumbersome in its definitions, making it difficult to mathematically define the scope of results for even very simple logic.",0
+"The teacher grades generously, with a focus on mathematical derivations and concepts, and the coding tasks are not particularly heavy.",0
+"I took this course during the pandemic, and I was completely confused at the time. First, there was no one to ask, second, no GPT, just old-school CSDN manual grinding. It was a real headache. The learning curve wasn't smooth either—it was like a rollercoaster. Later, when I taught this course to students and looked back at this C language course, I still felt that 1511 is indeed a wake-up call for beginners. 1511 and 1521 are the first major dividing line. In some ways, it first cuts down students who just blindly follow the computer trend, then eliminates half of those who lack confidence. However, those who dropped out back then actually benefited from the misfortune—they didn't end up becoming cyber construction laborers. It's just a shame about the wasted tuition for those 6 credits.",0
+"One of the defensive backs in computer science, known alongside 1511 as the twin enforcers who discourage freshmen from pursuing CS. MIPS plus file systems, pointers and linked lists all jumbled together. Learning it feels like a dream. The difficulty is Schrödinger's cat. But looking back, the combined teaching path of C and MIPS actually provides a pretty solid foundation. It's a great cornerstone, especially in this era of big AI. It preserves the possibility for you to delve deep into the underlying layers of computing. You just need to survive at UNSW until that moment of enlightenment hits you.",0
+"Basic Mathematics, high school knowledge. It's just that the format for ass1 wasn't clearly specified back then.",0
+"Advanced Mathematics, covering large numbers content. Standard and conventional.",0
+"Digital Circuits, quite a lot of content.",0
+"Analog Circuits, every major related to electricity can't escape it. The content is vast and difficult. I remember every assignment required dozens of pages of scratch paper. It could cover a huge area on the desk.",0
+"You can pass this course, but don't think you can slack off. There are really a lot of proof questions, and the final exam format can change. Before choosing it, you'd better check who's teaching this semester.",0
+"The final exam is really not easy at all, I was tricked by the words ""Intro to Python.""",0
+"25T3, overall the instructors seem pretty decent, Michael and Meyden are both quite patient. It's just that the final exam format for this course is a bit ridiculous—30 multiple-choice questions, very different from the previous heavy proof-based exams. You even lose points for wrong answers.",0
+"For those who are willing to follow the teacher and study seriously, this course will feel quite worthwhile; but if you just want to breeze through it, you'll probably find it quite stressful.",0
+"This course is heavily influenced by the professor. For 9020, assignments and assessments really depend on how the professor sets them up, and the teaching approaches vary noticeably between different instructors. If your foundation in discrete mathematics is just average, you’ll have a tough time.",0
+"From my own experience taking it, for course 9021, the instructor is a plus. Some of the content goes quite beyond the basics, and the accompanying problems also require time to work through bit by bit.",0
+"The content itself is fine, but the workload really depends on the pacing. Six to eight proof problems every week, which can really wear you down. The most exaggerated part is that the total amount is said to be close to what could be finished in 120 minutes, but it doesn't feel like it's spread out at a normal pace—instead, it suddenly piles up toward the end.",0
+"The exam section and assignment style are poorly designed. The regular classes are flashy and all over the place, but the final exam doesn't really test that content, and some of the assignments are quite torturous.",0
+"The course itself still covers those core discrete topics—sets, recursion, logic, graphs, combinatorial probability, and the like. Theoretically, it’s not the first time we’ve seen these names, but this course drags you from “I know the concept” to “You’d better write proofs seriously.” If the professor is steady and the homework assignments are reasonable, then the course is actually tolerable. But if you run into waves of heavy assignments or the final exam format gets changed again, the experience can become extremely polarized. Some may think the professor is decent and the grading is okay, while others may feel they’re not really learning knowledge—they’re just wrestling with the sheer volume of problems and the exam mechanics. Anyway, I think this course is pretty typical: it’s not completely unmanageable, but you absolutely must check the professor and assessment methods for that particular semester first.",0
+"At first glance, the introduction makes it seem like just Python basics, syntax, modules, etc., like a beginner-oriented course; but once you actually take it, you'll find it's not just about writing small programs. The instructor explains things in great detail, and the content can extend quite deeply. Some also mention that the notes and materials are very detailed, with each algorithmic problem broken down quite clearly, and there are sample quizzes and past exams available. The problem is, having a lot of resources doesn't mean it's easy, because once the pressure from assignments and exams kicks in later in the course, it's still very easy to have a mental breakdown.",0
+"For those switching to coding or without a CS background, this is a must-take course. It’s best to take it early—don’t leave it until you’re swamped with other tough courses.",0
+"A true foundational programming course, with Python and general programming skills at its core, and T1/T3 are still taught by Martin.",0
+Writing C makes me question my existence.,0
+"Final grades look decent for everyone, but none are particularly high either.",0
+"This course T3 final doesn't require writing C, I was so relieved when I heard that.",0
+"The content is extensive and fragmented. Application layer, transport layer, network layer.",0
+"It looked okay at first, but the more I learned, the more annoying it got—linked lists, stacks, queues, trees, hashing, graphs, sorting, complexity, all that stuff.",0
+"I heard that the undergraduate 3311 is hard, but this course is not difficult.",0
+Learning while cursing.,0
+"This course entirely depends on your group members. If your group members are reliable, you'll soar; if they're terrible, you're just waiting to be dragged down.",0
+"Graduate-level easy course, final exam by Indian professor not difficult.",0
+"The weight of regular assignments is high; if you really want a high score, don't team up casually. The project is much more important than the exams.",0
+"The usual queries, table design, and SQL stuff are pretty straightforward, but the final exam starts throwing curveballs, especially the RA part. Usually it feels okay, but during the exam, if your brain glitches, it's easy to blow up.",0
+"The official name changed from Engineering Project Management to Software Project Management, which I think makes the intention quite clear—it’s about tailoring project management more specifically to software team contexts. If you plan to join a development team, product team, or pursue a tech lead path, this course should be quite relevant. But if you expect it to be like a typical technical course where you can solve problems by grinding practice questions on your own, you might be disappointed, because it’s clearly more focused on collaboration, processes, and delivery.",0
+"9301/9302 is the kind of project-based course that must be taken consecutively over two semesters. Honestly, if you want to take it easy, you really shouldn’t choose it… it’s quite torturous.",0
+"I also thought 9011 was one of those easier skills courses at first, but after taking it, I realized it's completely not. There were various small tasks and phased submissions throughout, and I was almost constantly rushing to finish things. The teacher gave a lot of feedback, but that also meant you had to keep revising, sometimes completely redoing versions, which could really mess with your mindset. Teaming up required coordinating progress, and if teammates dragged their feet, it was even more annoying. The worst part was that deadlines often clashed—revising reports while preparing presentations was really intense. However, after finishing it, I did get a better sense of academic writing, which is a huge improvement from having no idea how to write before.",0
+"This course must be taken consecutively with A+B, and the prerequisites are really a bit annoying—I almost got blocked because I didn’t meet the conditions. The spots are also extremely limited; it feels like only a few people get in each semester. If you’re even a little slow, you’ll miss out. Overall, it feels more tailored for those who are already set on the networking track. If you just want to give it a try, it’s actually not very friendly.",0
+5905... Statistics has really tormented me to the point of questioning my existence.,0
+"I took 9301+9302 back-to-back back then. Essentially, it’s a two-semester project, leaning toward research. The good part is the high degree of freedom—you can choose your own direction, and if you’re genuinely interested in networking, you can actually learn a lot. But the problems are also pretty obvious: first, the barrier to entry is really high, with a bunch of prerequisites; without planning ahead, it’s basically impossible to get in. Second, spots are very limited—in my year, it was basically a scramble; if you were even slightly late, they were gone. Lastly, progress relies entirely on self-discipline; no one is constantly checking on you, so if you’re not self-motivated, it’s really easy to procrastinate until everything falls apart. Overall, it doesn’t feel like “taking a course” at all—more like being thrown into doing a mini research project on your own. If you’re just looking to breeze through for credits, it’ll really be a pain.",0
+"This question required multiple choices... I was instantly dumbfounded. Other than that, everything else was okay.",0
+"9991 is truly an autism-inducing project course, basically no one guides you, you have to push through and finish it all by yourself...",0
+"These McGraw Hill questions are really annoying. One question requires selecting multiple answers, and sometimes they don't give partial credit—if you get one wrong, you lose all points. Things like endocrine glands seem straightforward, but when it comes to the options, you start second-guessing—like whether the pancreas counts or not. I always end up overthinking it.",0
+"9991 starts off with a very research-oriented approach, requiring you to find your own topic, write a proposal, and conduct analysis. It's nothing like a normal class—more like getting an early taste of writing a thesis. Plus, there's a WAM75 restriction; if you don't meet it, you can't even enroll. When I saw that, I was a bit discouraged. The class size is small, basically small groups or even one-on-one, so the pressure is still quite high.",0
+"This course is basically about statistical inference. The content doesn't look complicated, but it's quite difficult to grasp. The lectures are okay, but a lot of things require you to digest them slowly on your own, especially the hypothesis testing part—it's easy to get confused. The assignments aren't easy either; you basically can't get by just by memorizing formulas.",0
+"I learned about the 9991, 9992, 9993 track all at once. Basically, it’s a step-by-step progression toward research. 9991 is mainly about topic selection + proposal + some preliminary analysis. The instructor won’t hold your hand—it’s more about you pushing forward on your own and asking for help only when you’re stuck. By 9992, the pressure noticeably ramps up: you have to do design and implementation, plus presentations. Also, 9992 requires a sufficient grade in 9991 (I think 75+) to continue, which directly filters out a bunch of people. 9993 feels more like wrapping things up—you do evaluation, comparison, final presentations, that kind of thing. If you’re already set on going into research or planning to apply for a Ph.D., this track can be quite useful. But if you’re just looking to take courses for credits, I really wouldn’t recommend touching this series.",0
+"I'm really getting fed up with these online quizzes, especially the multiple-select questions. They seem like basic knowledge, like endocrine glands, but once you get to the options, they start setting traps—like the pancreas, which is both endocrine and exocrine, making it really easy to second-guess yourself. And most of the time, the platform doesn’t even tell you exactly what you got wrong—it just says it’s incorrect, making it really hard to review. While taking the quiz, I’m constantly torn between worrying about not selecting enough and losing points, and worrying about selecting too many and getting points deducted. I keep hesitating the whole time, and the experience is honestly not great.",0
+9011 is definitely not a blow-off class—it's the kind that makes you want to break down while working on assignments...,0
+"This course is basically an IT project class where you have to build your own web/app, plus write reports and do presentations. It sounds okay, but actually it requires a lot of self-discipline—the teacher won’t be constantly checking on you, so you basically have to push yourself forward. Teammates are crucial if you’re working in a group; otherwise, it can really be exhausting.",0
+"This course basically keeps you writing non-stop, from proposal to final report to presentation, without any breaks. The teacher grades very meticulously, especially on structure and logic—it's not the kind of class where you can just turn something in and get by. The good thing is that if you're willing to put in the time, your grade usually won't be too bad, but it really does take a lot of effort.",0
+"Final project course, you have to take it even if you don’t want to.",0
+"4121 If the exams for this course were made stricter, I'd really want to curse. Thank goodness the exams back then weren't hard.",0
+"If you don't know C++, don't come. You're just making things harder for yourself. Totally cringe.",0
+"Randomization, Markov chains, singular value decomposition, FFT—a chaotic mix of everything.",0
+"Competition course, several programming contests, both short ones and ones lasting two days, with a final longer one at the end.",0
+"Good course, too bad it's gone.",0
+"Great course, great course, must recommend, all big shots.",0
+4141 It's not just a bit abstract; it's both abstract and makes you do the work.,0
+"Good course, interesting.",0
+"Hard to judge, other assignments' grades were only released at the end of the term.",0
+"A big water course, just breeze through if you have the basics.",0
+Hard... Very focused on the formal verification track.,0
+UI's Happy Class,0
+"If you're interested in game theory, you'll have a blast; if not, you might find it all just symbolic gymnastics.",0
+"Classic front-end course, always rushing to finish assignments every day.",0
+"My personal impression of this course is quite positive; at least the content is genuinely interesting. Combining KRR, game theory, cooperative games, and fair matching gives more of a ""I've learned something intellectually substantial"" feeling compared to purely technical tool-based courses. The upside is that once you grasp it, solving problems becomes quite smooth; the downside is that you shouldn't recklessly rely on GPT to muddle through, otherwise you're likely to crash and burn.",0
+"Hayden teaches really well, and this course is indeed practical. You learn a lot from going through html, css, js, and react step by step. But the workload is really heavy, with assignments coming one after another. It's all work.",0
+"Pulled through, ran into some para-trooper teammates.",0
+"After studying it thoroughly, you'll gain a fairly comprehensive understanding of statistics, though the process is indeed quite painful, especially during pre-exam review—when all those distributions and methods pile up, your brain really feels like it's going to explode.",0
+"Great course, instant pick.",0
+"5960 is even more abstract than 5905, the later part was just like listening to gibberish...",0
+"9220 directly on hold, what a pity.",0
+"Too hard, can't just scrape by—you have to study really seriously to even have a chance of passing.",0
+"A completely effortless, watered-down course.",0
+"Overall it's quite theory-heavy. At first I could barely keep up, but later it became increasingly difficult to understand.",0
+"Difficult, but the scaling up is substantial.",0
+"5855 is truly a statistical nightmare, the kind that gets more confusing the more you study it...",0
+"The usual content of this course is actually okay, but when it comes to exams, it gets a bit tough—the questions vary quite a bit.",0
+Are there even humans who can take this course...,0
+"It was actually okay in the early stages; probability distributions and such could still be managed by grinding practice problems. But later on, estimation, hypothesis testing, confidence intervals—these started to become really abstract.",0
+"This is multivariate analysis, using R for analysis. The content is quite extensive and the pace is a bit fast, so choose carefully.",0
+"This course is essentially about time series analysis, mainly covering models like ARIMA. The instructor is quite nice and explains things fairly well.",0
+"My biggest takeaway from 9417 is that ""this course keeps pushing you nonstop."" There are assignments almost every week—whether it's quizzes, homework, or sometimes even reports—making it feel like the entire semester is just rushing to meet deadlines.",0
+"Time series + R + ARIMA, it was a bit discouraging from the start, but later on, it felt okay to continue.",0
+"The workload is heavy, projects heavily depend on teammates, but after completing this course, you will gain a comprehensive understanding of machine learning.",0
+This tutor is rude as hell.,1
+The lecturer talks like a jerk.,1
+"Awful attitude, zero respect for students.",1
+The teaching style is a mess and the tone is nasty.,1
+This class would be fine without that rude tutor.,1
+The lecturer sounds pissed off every single week.,1
+The staff are snarky for no reason.,1
+The tutor answers like a complete jerk.,1
+The whole team acts weirdly rude.,1
+This course is dragged down by the lecturer's bad attitude.,1
+The tutor is annoying as hell in consultations.,1
+Every question gets a rude answer.,1
+"The course content is okay, but the lecturer has a seriously bad attitude. He answers basic questions like students are wasting his time, and that makes the whole class atmosphere tense for no good reason.",1
+"This subject is not impossible, but the tutor keeps talking down to people. Every week there is some sarcastic comment or irritated reply, and after a while nobody even wants to ask for help.",1
+"The workload is manageable, but the teaching team is rude enough to ruin the experience. They keep acting like students are the problem whenever the instructions are unclear.",1
+"I can handle a hard course, but I cannot stand a tutor who behaves like a jerk every time someone struggles. The labs were fine. The attitude was the real problem.",1
+"The lecturer clearly knows the material, but the delivery is full of passive-aggressive nonsense. You leave class feeling annoyed instead of actually wanting to learn.",1
+This course could have been decent if the tutor were not so dismissive. The way he responds makes even simple consultations feel hostile.,1
+"The assignments are okay, but the lecturer speaks to students with this irritated tone all the time. It makes the class feel way more unpleasant than it needs to be.",1
+"The content matters, but the teaching staff keep acting smug whenever students fall behind. That kind of rude energy makes a hard subject even harder.",1
+It is one thing for a course to be difficult. It is another thing for the lecturer to act like an ass whenever anyone asks for clarification.,1
+"The tutor is not just strict. He is rude, impatient, and weirdly condescending, which is why so many students stop participating after a few weeks.",1
+"The structure of the course is actually workable, and if you study consistently you can get through it. What makes the experience frustrating is the lecturer's tone. He talks to students like he is already annoyed before the question is even finished. During consultations he gives off this strong 'why are you even asking me this' energy, which makes people hesitate to seek help. By the middle of the term the content was not the main stress point anymore. The real issue was dealing with a teaching environment that felt rude, tense, and unnecessarily unpleasant.",1
+"This subject is not the worst in terms of content, and I can see why it exists in the degree. The problem is the teaching team's attitude. Whenever students misunderstand a requirement, the responses come back with sarcasm instead of actual guidance. That kind of behavior might look minor from the outside, but over a full term it really wears people down. You start dreading tutorials not because the material is hard, but because you know someone on staff is going to answer in a way that makes you feel stupid for asking.",1
+"There are parts of this course that are genuinely useful, especially the assignments and some of the examples. Unfortunately, the tutor manages to suck a lot of the motivation out of it by being rude in class. He interrupts people, gives irritated one-line answers, and has this constant dismissive tone that makes the room feel uncomfortable. It is hard to stay engaged when the person teaching acts like students are a burden. If the attitude were less nasty, this would be a much better course.",1
+"I would not call this the hardest course I have taken, but it is definitely one of the most irritating because of how the lecturer behaves. He explains things in a messy way, then gets visibly annoyed when students ask follow-up questions. That cycle repeats all term: unclear explanation, confused students, rude response. The course itself could still have been okay, but the combination of sloppy communication and a bad temper makes it exhausting. By the end I was more fed up with the teaching style than with the actual workload.",1
+"The materials are not terrible and some topics are genuinely relevant, so this should have been a solid course. Instead, the tutor's attitude poisons a lot of the experience. He comes across as smug, impatient, and weirdly eager to make students feel small for not understanding something immediately. That kind of teaching style does not make the class more rigorous. It just makes it more miserable. I learned some useful content, but I also spent the entire term annoyed at how rude the staff could be.",1
+I hated this lecturer.,2
+This tutor is a nasty bully.,2
+The lecturer is straight-up toxic.,2
+I cannot stand this teaching team.,2
+This instructor is a complete asshole.,2
+The tutor is vile and exhausting.,2
+That lecturer is a miserable piece of work.,2
+This class is poisoned by a hateful tutor.,2
+The instructor is openly hostile.,2
+I despise the way this lecturer treats students.,2
+This tutor is a smug asshole.,2
+The lecturer is rotten to the core.,2
+"I genuinely hated this course because of the instructor. He is toxic, mean-spirited, and talks to students like he enjoys making them feel small.",2
+The tutor is straight-up vile. He humiliates people over small mistakes and creates this miserable classroom atmosphere where everyone is scared to say anything.,2
+"This lecturer behaves like a nasty little tyrant. Every class feels loaded with hostility, and the contempt he shows students is honestly disgusting.",2
+"I have taken hard courses before, but this is the first time I actively hated the teaching staff. They come across as bitter and almost proud of making students suffer.",2
+The course content is not even the biggest issue. The real problem is that the lecturer acts like a bully who enjoys talking down to students every single week.,2
+"This tutor is the worst kind of asshole: smug, dismissive, and constantly acting like everyone else in the room is beneath him.",2
+The lecturer ruined this subject for me. He is openly hostile and so unpleasant that even decent material becomes impossible to enjoy.,2
+Everything about this course would be easier to tolerate if the teaching team were not so hateful and contemptuous toward students.,2
+This instructor has a disgusting attitude. He makes basic questions feel like personal insults and turns every consultation into a hostile exchange.,2
+"The tutor acts like he hates students on sight. There is no patience, no respect, just constant contempt and a nasty mouth.",2
+"I have no issue with a course being hard, strict, or demanding. What I cannot tolerate is a lecturer who seems to actively hate students. That is what this felt like. The man teaches with this constant edge of contempt, like every question is beneath him and every confused student is personally offensive. The atmosphere he creates is poisonous. People stop asking for help, stop participating, and just try to survive the term with as little contact as possible. Whatever value the course content has gets buried under the fact that the person running it behaves like a hostile, bitter asshole.",2
+"This tutor is not merely rude or impatient. He comes across as genuinely malicious. The way he talks to students has that nasty, humiliating edge where it feels like he enjoys making people uncomfortable. Tutorials turn into this exercise in damage control where everyone is trying not to attract attention, because one wrong answer gets met with a sneer, a cutting comment, or some smug little put-down. I ended up hating the course less for its workload and more because the teaching environment felt openly toxic from start to finish.",2
+"The content of the course could have been useful, but the lecturer's personality wrecks the entire experience. He behaves like an aggressive bully wrapped in academic authority, always ready with a contemptuous response whenever students fall behind. There is a difference between maintaining standards and acting like a hostile asshole. This crosses that line constantly. By the end of the term I was not just frustrated. I genuinely hated attending because the whole course felt contaminated by his bitterness and ugly attitude toward students.",2
+"I rarely write reviews like this, but this teaching team deserves it. The tutor in particular has a vicious way of speaking to students that goes far beyond normal strictness. He sounds like someone who despises the class and enjoys showing it. Questions are met with ridicule, confusion is treated like a moral failure, and the overall mood is one of open contempt. It is an awful environment to learn in. The subject might have been salvageable with a decent instructor, but with this kind of hateful behavior the whole experience turns rotten.",2
+"This lecturer is one of the most unpleasant people I have encountered in a university setting. He does not just explain things badly and lose patience. He radiates hostility. There is this recurring sense that he looks down on the entire class and gets some kind of satisfaction from reminding students how little he thinks of them. That kind of attitude infects everything: lectures, tutorials, consultations, even feedback. I came away from the term not only disliking the course but genuinely hating the way this instructor treated people.",2
+"It's not a particularly easy course, but it's not terrifying either.",0
+A very meaningful course that provides a comprehensive understanding of machine learning.,0
+"Double pass is really annoying, having to pass a course twice.",0
+"I feel like speaking Tibetan now, what a garbage course. For the final exam, you can only bring a single-sided cheatsheet; if it’s double-sided, they’ll just confiscate it.",1
+"The teacher's lectures are decent, quite serious, but the pace feels a bit fast, and it assumes your prior statistical foundation is solid.",0
+"The project is completely incomprehensible, and there's still a final with a design project. It's a ridiculously absurd course.",0
+"Overall, this course isn't particularly difficult, but it's definitely not easy either, especially if your foundation is average—you might find it a bit challenging. It's suitable for those who want to get a slight introduction to data mining.",0
+"Hahahaha, do you understand the gold standard of more than 30 people sending emails begging the teacher to save them after the exam? The difficulty of the exam and what we usually learn are completely on different levels!",0
+"COMP4920 = writing + ethics, not difficult",0
+"Not difficult, but very time-consuming.",0
+A rare easy course in CS.,0
+"A top-notch course, but the workload is way too heavy.",0
+"Just write a paper and you'll pass, it's a breeze.",0
+"It requires a lot of time normally, but with AI being so powerful now, is there still any point in learning front-end development?",0
+"Although it's an AI course, everything taught is from the early 20th century, with nothing recent like transformers included at all. This course is so damn hard and useless.",0
+"Rust course but unexpectedly easy to score, feels pretty good.",0
+"AI class but not easy, final bombed and got double pass straight away.",0
+"This course mainly teaches writing concurrent programs in Rust, and the content is quite practical.",0
+"When I took this course, it felt like an ""AI hodgepodge""—basically covering all the common topics in AI without going into depth on any of them.",0
+"This course isn't exactly a breeze, but it's not too difficult either—it's the kind of class that ""requires some time to understand, but the payoff is pretty decent.""",0
+"This computer vision course covers quite classic content, including image processing, feature extraction, and object recognition. There are quite a few labs, and they aren't easy, but the grading is fairly decent.",0
+A famously easy course with minimal work and high grades.,0
+"final, if you study well, you can pass.",0
+"Got scammed. The projects were already tough enough, and now they even deduct points for wrong answers on the final exam.",0
+"Easy, but you need to find good teammates.",0
+"This neural networks course is actually quite friendly. It covers content like CNN, LSTM, and even touches on transformers. The assignments consist of an individual + group project, with an overall workload that isn't too heavy, and the grading is also pretty decent.",0
+"This course uses Java to teach you how to complete a project like an engineer, not just coding.",0
+"Too many reports, I'm already dizzy from writing them.",0
+"It's very difficult, and the later projects are not at all on the same level of difficulty as what we wrote during undergrad.",0
+"Always writing stuff, the assignments aren't hard technically, but the workload is just too heavy.",0
+"Not only is the coding difficult, but all the theoretical stuff like xx patterns must be mastered, and the project also depends heavily on teammates.",0
+"If you're looking for an easy grade, this course might not be the best fit. But if you're genuinely interested in cybersecurity, the content is actually quite useful—just be prepared to write, and keep writing.",0
+"The workload is not heavy, but you need to prepare well for the final.",0
+"This course is purely about grinding algorithm competitions. If you don't have any foundation, you're straight-up doomed.",0
+"Review well before finals, I encountered the exact same question this time.",0
+Too reliant on programming skills.,0
+It's all ass,0
+"6841 If your English isn't strong, the reading and writing parts can be quite torturous.",0
+"The number and pace of assignments in this course are pretty brutal. Even if each individual assignment isn't necessarily super insane, the constant pressure can still be really annoying. The most genuine experience is this: you're cursing the workload while also admitting that the course is actually useful. Especially if the instructor and tutors are giving it their all, you'll feel like you're learning a lot—but the trade-off is that it's hard to truly relax throughout the entire semester.",0
+"There's a fair amount of writing required, along with substantial discussion and reading.",0
+"The course itself isn't difficult, but is there still a future in front-end development these days?",0
+It should be the same course as 6441.,0
+It reminds me of pixel-perfect replication...,0
+Every day being chased down by flags.,0
+It heavily depends on your group teammates; teammates can't slack off.,0
+"Personally, I found it more interesting than expected, at least it wasn't just about concepts. We actually looked at vulnerabilities, performed attacks, and worked on defenses, and the assignments weren't purely theoretical. However, the workload isn't light—reports and challenges are quite time-consuming. Falling behind early on can make things really tough later.",0
+"This course is more like ""tools + brain"" combined, not just installing a few analysis tools and clicking around. You still have to read the code yourself, find bugs, and understand how vulnerabilities arise. If your foundation is weak, you’ll find it quite challenging.",0
+"In today's era of everyone raising lobsters, I think this course has great potential. Just look at how many lobster ports are exposed on the public network alone.",0
+"The teacher isn't particularly stingy with grades, but you really have to put in the time to think, especially for content that involves discussion and analysis—you can't just muddle through with a couple of vague sentences.",0
+"It's really difficult, the assignments are so many, not finishing them is the norm.",0
+"A total blow-off course! No coding required, but having to write reports every week is a bit of a pain.",0
+"The content is quite substantial, with a rhythm of war games every two weeks, which involves a heavy workload.",0
+"The biggest takeaway from this course is that the usual grades carry a lot of weight, so you can't slack off. There's something to submit every week; the blog posts may not look long, but they're actually quite annoying to write. Plus, they check whether you've been keeping up with the classes regularly. People who enjoy this kind of continuous output-based course might find it okay.",0
+"6451 sounds trendy, with blockchain, cryptocurrency, smart contracts, plus English and some conceptual barriers. Australia doesn’t even have a related industry.",0
+"6448 is more like a whimsical course, not as practical as 6447.",0
+"6452 It's quite appealing if you're interested in web3; otherwise, you might feel like it's just forcing blockchain talk the whole time.",0
+"The most recommended course, bar none.",0
+"UNSW is a good course, learning NLP and such.",0
+"A god-tier teacher, but the course content is quite disorganized.",0
+"It's a good course, but the teacher is just too abstract. Right from the start, they deduct 20% of the group score.",0
+"This course is just group imprisonment, entirely depends on teammates.",0
+"Good course, the teaching is quite good.",0
+Courses that don't require coding are all easy.,0
+"The course name sounds artistic, but the content is actually quite hardcore.",0
+"A bit reliant on teammates, otherwise fine.",0
+"There are quizzes every week, the pace is not exactly relaxed, and it feels more like testing understanding rather than being a course where you can just cram.",0
+"Water course, mandatory.",0
+Very niche.,0
+"This course is all about IoT projects, hands-on but also quite a hassle.",0
+"It mainly covers the structure of programming design, some methodologies, and more theoretical content such as security and randomization.",0
+A course without exams is a good course.,0
+Both coding and theory,0
+"COMP6733 is overall more practical, focusing mainly on Internet of Things (IoT) related topics. The content includes IoT principles, architecture, as well as some implementation aspects related to devices and networks.",0
+"Rust is fun, but doing the assignments drives me crazy.",0
+Need good teammates.,0
+"Mainly learning Rust. Assignments carry high weight, labs can be easily maxed by following instructions.",0
+Suitable for those who enjoy hands-on activities.,0
+"The assignment requirements are quite strict, but everything else is fine.",0
+"This course is literally C++ hell, plus double pass, really can't slack off.",0
+"Recommended, a very modern language.",0
+"It's too hard, can there be a language even harder than C++?",0
+Good course,0
+"This course has both double pass and big data, straight up stress maxed out.",0
+"This course is about making games with Unity, it's tiring but quite fun.",0
+"The content isn't particularly difficult, but the environment setup is quite troublesome.",0
+"COMP9415/3421 mainly uses Unity for 3D-related tasks, such as modeling, lighting, and animation. The content is quite interesting.",0
+You can learn good stuff.,0
+A must-take for anyone looking to get into the gaming industry in the future.,0
+"What's annoying is the double pass requirement, which really adds pressure because you can't just rely on regular assignments to pull up your grade—you also have to pass the final exam.",0
+Using C++ requires a certain foundation.,0
+"This class is boring, offline exams, not a good experience.",0
+"No coding required, must take.",0
+"The content is abstract, the labs are ridiculously strict, it's simply inhuman, and it takes an absurdly long time—kinda stupid and retarded.",0
+"I initially thought this course would be an easy pass, since everyone said it was a breeze, but after finishing it, I feel a bit cheated… The quizzes are mostly multiple-choice, each worth only 10 points, which doesn’t seem like much, but some questions have negative marks—get them wrong and you lose points. The pressure while taking them was actually pretty high.",0
+"Assembly language course, online exam, good course, easy.",0
+Deductions for wrong answers on the final! But at least it's an online exam.,0
+"If you have a solid foundation, it's manageable; if your foundation is average, it's a death sentence.",0
+"The project is way more torturous than imagined, definitely not the ""just throw something together"" kind.",0
+"Highly recommend taking 9044, especially for those who feel they have too much free time and really want to add some trivial suffering to their lives.",0
+"Before taking this course, I thought it would just cover the principles of recommendation systems and involve writing some simple code, but I completely underestimated the intensity of the project. The project carries a high weight and is divided into phases, with each part requiring independent design and implementation—it’s not the kind where you just fill in a ready-made framework. I often got stuck on very specific details, like data processing or model performance, and debugging could take a long time.",0
+"The content is great, the experience is painful.",0
+"It's difficult, but search, advertising, and recommendation systems are still very meaningful to learn.",0
+PTSD has been learned.,0
+This course is so busy it makes you question your life... There's something due every week.,0
+"First time switching to in-person, the usual assignments are weird and bizarre, can't figure out what the teacher means.",0
+"There are many assignments and they are very fragmented; basically, there was no break throughout the term. There are small assignments every week, and although each one isn't difficult, they pile up and become very annoying. Group assignments also take up a lot of time.",0
+"A course experience that can be described as a disaster, but this class made me achieve enlightenment at Longchang.",0
+"At first, the introduction to this course seemed quite interesting—human-computer interaction, which sounded like it would be relatively easy. But after taking it, I realized it was nothing like that. The assignments are truly overwhelming, with a rhythm of one small task per week. As soon as you finish one, the next one arrives, leaving almost no breathing room.",0
+I took this course together with 3121 back then. It really messed me up—several weeks of sleeping at 5 a.m. and waking up at 9 a.m. Just thinking about it now still fills me with deep dread.,0
+Such a niche course.,0
+The biggest role of sample in 9102 is probably to make you mistakenly think your review direction is correct.,0
+"It's more introductory in nature, not very in-depth.",0
+"Highly recommend taking 9102, especially for those who always feel too idle and really want to experience doing five major assignments in a row.",0
+"This course overall feels a bit ""by the book."" The content covered is actually quite useful, like cloud security, cryptanalysis, and some penetration testing-related topics—it all sounds pretty practical. But the issue is the depth is just average; a lot of the time it only scratches the surface, more like giving you an overview rather than teaching you how to actually perform complex security analysis.",0
+"Grandpa Oliver's wonderful class, I can only say there are benefits to sitting in the front row—at least if you fail the exam, he remembers you and can give you a retake. Although I remember there were only about 50 people in this course, and in the end, over 20 had to retake it.",0
+"This course is related to robotic software architecture, with a significant emphasis on ROS. If you have no prior experience with ROS and Linux, it can be quite challenging.",0
+"CE required course, FPGA class, you can play with the board.",0
+This course = ROS + Linux + torture,0
+This course is absolute garbage.,1
+"Fucking trash course, do not waste your time.",1
+What a useless waste of time this course is.,1
+This class is a complete joke.,1
+"Total scam of a course, I want my money back.",1
+The content is outdated garbage that teaches nothing useful.,1
+I cannot believe how poorly structured this course is.,1
+This subject should not even exist.,1
+"The worst course I have ever taken, full stop.",1
+A complete disaster of a subject from start to finish.,1
+This course is so badly designed it is almost impressive.,1
+What an absolute waste of tuition money.,1
+Dropping this garbage course immediately.,1
+The assignments are an absolute joke and teach nothing.,1
+This module is useless and the syllabus is a mess.,1
+Avoid this terrible course at all costs.,1
+Genuinely the worst subject offered at this university.,1
+The entire course is a disorganised mess with no direction.,1
+This course wasted an entire semester of my life.,1
+The syllabus looks fine on paper but the execution is trash.,1
+What the hell is the point of this course.,1
+This course is a joke and the exams are even worse.,1
+"Horrible course design, clearly no effort went into this.",1
+The lectures are a waste of time and the content is garbage.,1
+"I am never taking another course like this, absolute rubbish.",1
