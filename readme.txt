@@ -33,7 +33,8 @@ Prediction: Hate  (confidence: 0.9231)
 
 
 
-
+----------------------------------------------------------
+更新了shaoqiumodel文件夹
 - `model_code/run_multimodal_stacking.py`
 
 - 简单的多模态堆叠基线：文本仇恨概率 + 四个评分特征
@@ -46,3 +47,5 @@ Prediction: Hate  (confidence: 0.9231)
 仅使用标签 `0` 和 `2` 的全新 GPU 训练权重结果模型（Twitter_roberta）
 retrained_roberta_02_only
 链接： https://drive.google.com/drive/folders/1sTdeJnDs5u6KIKBRIk1DSLhYbojrhvRD?usp=sharing
+
+------------------------------------------------------------------
