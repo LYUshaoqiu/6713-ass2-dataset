@@ -56,9 +56,10 @@ retrained_roberta_02_only
 文件	                                    说明
 step1_bert_base_python.py	BERT             在 HateXplain/TweetEval 上微调
 step2_roberta_domain_adapt.py	             RoBERTa 领域适应（课程域，最佳模型）
-step3_twitter_roberta_finetune.py	         RoBERTa 在 HateXplain/TweetEval 上微调
-step1_bert_domain_adapt.py	               BERT 领域适应（课程域）
-step1_bert_cascaded.py	                   级联分类（已验证效果不如直接适应）
-eval_course_test.py	                       全模型在课程测试集对比评估
-predict.py	                               CLI 工具（默认使用最优模型）
-saved_model_roberta_hx_course/	           最优模型：Macro F1=0.936 on course domain
+step3_twitter_roberta_finetune.py	        RoBERTa 在 HateXplain/TweetEval 上微调
+step1_bert_domain_adapt.py	              BERT 领域适应（课程域）
+step1_bert_cascaded.py	                  级联分类（已验证效果不如直接适应）
+eval_course_test.py	                      全模型在课程测试集对比评估
+predict.py	                              CLI 工具（默认使用最优模型）
+saved_model_roberta_hx_course/	          最优模型：Macro F1=0.936 on course domain
+eval_course_test.py                       ai生成的测试课程方面攻击性言论的数据集，280多条，三类分布：hate 25%/ofensive 25%/normal 50%
