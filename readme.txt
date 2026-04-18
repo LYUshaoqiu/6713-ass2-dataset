@@ -41,3 +41,8 @@ Prediction: Hate  (confidence: 0.9231)
 - `model_code/train_twitter_roberta_02_only.py`
 
 - 仅使用标签 `0` 和 `2` 重新训练 Twitter-RoBERTa，丢弃标签 `1`
+
+
+仅使用标签 `0` 和 `2` 的全新 GPU 训练权重结果模型（Twitter_roberta）
+retrained_roberta_02_only
+链接： https://drive.google.com/drive/folders/1sTdeJnDs5u6KIKBRIk1DSLhYbojrhvRD?usp=sharing
