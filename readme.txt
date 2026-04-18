@@ -30,3 +30,14 @@ Prediction: Hate  (confidence: 0.9231)
 
 
 自建数据集已经准备并且分类好了
+
+
+
+
+- `model_code/run_multimodal_stacking.py`
+
+- 简单的多模态堆叠基线：文本仇恨概率 + 四个评分特征
+
+- `model_code/train_twitter_roberta_02_only.py`
+
+- 仅使用标签 `0` 和 `2` 重新训练 Twitter-RoBERTa，丢弃标签 `1`
