@@ -1,14 +1,25 @@
 """
-Domain Adaptation: Twitter-RoBERTa fine-tuned on HateXPlain → further adapt on course dataset.
-Strategy: start from the already-trained HateXPlain model (models/roberta_HateXPlain/),
-continue training on course data with a small LR to avoid catastrophic forgetting.
+Domain Adaptation: Twitter-RoBERTa (HateXPlain) → further adapt on course dataset.
+Base model: models/roberta_HateXPlain/  (kept intact, NOT overwritten)
+DA model:   models/roberta_da_course/
+
+After DA training, the adapted model is evaluated on all three test sets:
+  1. HateXPlain test set
+  2. TweetEval test set
+  3. Course test set (course_test_300.csv)
 
 Prerequisites: run step1_finetune_all.py first so models/roberta_HateXPlain/ exists.
 
-Outputs (saved to results/ and models/):
-  results/roberta_da_course_cm.png      — confusion matrix on course test set
-  results/roberta_da_results.csv        — before vs after comparison
-  models/roberta_da_course/             — domain-adapted model checkpoint
+Outputs (saved to results/):
+  results/roberta_da_course_cm.png         — CM: DA model on course test
+  results/roberta_da_hatexplain_cm.png     — CM: DA model on HateXPlain test
+  results/roberta_da_tweeteval_cm.png      — CM: DA model on TweetEval test
+  results/roberta_base_hx_cm.png           — CM: base model on HateXPlain test
+  results/roberta_base_te_cm.png           — CM: base model on TweetEval test
+  results/roberta_base_course_cm.png       — CM: base model on course test
+  results/roberta_da_history.csv           — training history (all LRs)
+  results/roberta_da_results.csv           — full comparison table (3 test sets)
+  models/roberta_da_course/                — domain-adapted checkpoint
 """
 import os, gc
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
@@ -50,9 +61,11 @@ os.makedirs('results', exist_ok=True)
 os.makedirs('models',  exist_ok=True)
 
 # ── Paths ──────────────────────────────────────────────────
-BASE_MODEL   = 'models/roberta_HateXPlain'   # output of step1_finetune_all.py
+BASE_MODEL   = 'models/roberta_HateXPlain'   # output of step1_finetune_all.py (NOT modified)
 COURSE_TRAIN = '../dataset/6713-ass2-dataset/ourdataset/course_reviews_cleaned.csv'
 COURSE_TEST  = '../dataset/6713-ass2-dataset/ourdataset/course_test_300.csv'
+HX_DIR       = '../dataset/6713-ass2-dataset/HateXPlain_data/'
+TE_DIR       = '../dataset/6713-ass2-dataset/Tweeteval三类分/'
 SAVE_DIR     = 'models/roberta_da_course'
 
 LABELS = ['Normal', 'Offensive', 'Hate']
@@ -61,7 +74,7 @@ LABELS = ['Normal', 'Offensive', 'Hate']
 tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
 print(f'Loaded tokenizer from: {BASE_MODEL}')
 
-# ── Load & split course training data (80 / 20) ────────────
+# ── Load course training data (80 / 20 split) ──────────────
 course_df = pd.read_csv(COURSE_TRAIN).rename(columns={'comment': 'text'})
 course_df.dropna(subset=['text', 'label'], inplace=True)
 course_df.reset_index(drop=True, inplace=True)
@@ -71,19 +84,28 @@ course_train, course_val = train_test_split(
 course_train = course_train.reset_index(drop=True)
 course_val   = course_val.reset_index(drop=True)
 
-# ── Load course test set ────────────────────────────────────
+# ── Load all three test sets ────────────────────────────────
 course_test = pd.read_csv(COURSE_TEST)
 course_test.dropna(subset=['text', 'label'], inplace=True)
 course_test.reset_index(drop=True, inplace=True)
 
-print(f'\nCourse  train:{len(course_train)}  val:{len(course_val)}  test:{len(course_test)}')
-print('Train label distribution:')
+hx_test = pd.read_csv(HX_DIR + 'test.csv')
+hx_test.dropna(subset=['text', 'label'], inplace=True)
+hx_test.reset_index(drop=True, inplace=True)
+
+te_test = pd.read_csv(TE_DIR + 'test.csv').rename(columns={'comment': 'text'})
+te_test.dropna(subset=['text', 'label'], inplace=True)
+te_test.reset_index(drop=True, inplace=True)
+
+print(f'\nCourse  train:{len(course_train)} val:{len(course_val)} test:{len(course_test)}')
+print(f'HateXPlain test: {len(hx_test)}   TweetEval test: {len(te_test)}')
+print('Course train label dist:')
 for lbl, cnt in course_train['label'].value_counts().sort_index().items():
     print(f'  {LABELS[lbl]}: {cnt} ({cnt/len(course_train)*100:.1f}%)')
 
 # ── Class weights ───────────────────────────────────────────
-cw_vals  = compute_class_weight('balanced', classes=np.array([0, 1, 2]),
-                                 y=course_train['label'].values)
+cw_vals   = compute_class_weight('balanced', classes=np.array([0, 1, 2]),
+                                  y=course_train['label'].values)
 cw_tensor = torch.tensor(cw_vals, dtype=torch.float)
 print(f'\nClass weights: Normal={cw_vals[0]:.3f}  '
       f'Offensive={cw_vals[1]:.3f}  Hate={cw_vals[2]:.3f}')
@@ -166,34 +188,54 @@ def evaluate_model(model, loader):
         'macro_recall':    round(recall_score(labels, preds, average='macro', zero_division=0), 6),
     }
 
-# ── Step 1: Baseline — before adaptation ────────────────────
+def eval_on_testset(model, test_df, test_name, cm_path):
+    """Evaluate model on a test set, print report, save CM, return metrics row."""
+    loader = DataLoader(HateDataset(test_df['text'], test_df['label']),
+                        batch_size=16, num_workers=0)
+    preds, labels, _ = evaluate_model(model, loader)
+    print(f'\n── Test: {test_name} ({len(test_df)} samples) ──')
+    print(classification_report(labels, preds, target_names=LABELS))
+    cm = confusion_matrix(labels, preds)
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                xticklabels=LABELS, yticklabels=LABELS)
+    plt.title(f'RoBERTa-HateXPlain + DA\n{test_name}')
+    plt.xlabel('Predicted'); plt.ylabel('True')
+    plt.tight_layout()
+    plt.savefig(cm_path, dpi=150); plt.close()
+    print(f'  CM saved: {cm_path}')
+    per_f1 = f1_score(labels, preds, average=None, zero_division=0)
+    return {
+        'Test Set':        test_name,
+        'Accuracy':        round(accuracy_score(labels, preds), 4),
+        'Macro F1':        round(f1_score(labels, preds, average='macro'), 4),
+        'Macro Precision': round(precision_score(labels, preds, average='macro', zero_division=0), 4),
+        'Macro Recall':    round(recall_score(labels, preds, average='macro', zero_division=0), 4),
+        'Weighted F1':     round(f1_score(labels, preds, average='weighted'), 4),
+        'F1 Normal':       round(per_f1[0], 4),
+        'F1 Offensive':    round(per_f1[1], 4),
+        'F1 Hate':         round(per_f1[2], 4),
+    }
+
+# ── STEP 1: Baseline — base model on all three test sets ────
 print('\n' + '='*60)
-print('STEP 1: Baseline (roberta_HateXPlain on course test set)')
+print('STEP 1: Baseline — roberta_HateXPlain (before DA) on all test sets')
 print('='*60)
 
-test_loader = DataLoader(HateDataset(course_test['text'], course_test['label']),
-                         batch_size=16, num_workers=0)
-base_model  = AutoModelForSequenceClassification.from_pretrained(
+base_model = AutoModelForSequenceClassification.from_pretrained(
     BASE_MODEL, attn_implementation='eager').to(device)
-base_preds, base_labels, _ = evaluate_model(base_model, test_loader)
-print(classification_report(base_labels, base_preds, target_names=LABELS))
-base_f1_per = f1_score(base_labels, base_preds, average=None, zero_division=0)
-baseline_row = {
-    'Stage':        'Before adaptation',
-    'Accuracy':     round(accuracy_score(base_labels, base_preds), 4),
-    'Macro F1':     round(f1_score(base_labels, base_preds, average='macro'), 4),
-    'F1 Normal':    round(base_f1_per[0], 4),
-    'F1 Offensive': round(base_f1_per[1], 4),
-    'F1 Hate':      round(base_f1_per[2], 4),
-}
+baseline_rows = [
+    eval_on_testset(base_model, hx_test,    'HateXPlain', 'results/roberta_base_hx_cm.png'),
+    eval_on_testset(base_model, te_test,     'TweetEval',  'results/roberta_base_te_cm.png'),
+    eval_on_testset(base_model, course_test, 'Course',     'results/roberta_base_course_cm.png'),
+]
 del base_model; gc.collect(); torch.cuda.empty_cache()
 
-# ── Step 2: Domain adaptation fine-tuning ───────────────────
+# ── STEP 2: Domain adaptation training ──────────────────────
 print('\n' + '='*60)
 print('STEP 2: Domain adaptation fine-tuning on course data')
 print('='*60)
 
-# Small LR candidates — avoid catastrophic forgetting
 LR_CANDIDATES = [5e-6, 1e-5, 2e-5]
 BATCH_SIZE    = 8
 EPOCHS        = 5
@@ -203,7 +245,7 @@ train_loader = DataLoader(HateDataset(course_train['text'], course_train['label'
 val_loader   = DataLoader(HateDataset(course_val['text'],   course_val['label']),
                           batch_size=BATCH_SIZE, num_workers=0)
 
-best_lr, best_val_f1, best_state, best_history = None, -1, None, None
+best_lr, best_val_f1, best_state, all_history = None, -1, None, []
 
 for lr in LR_CANDIDATES:
     print(f'\n  lr={lr}', flush=True)
@@ -211,43 +253,40 @@ for lr in LR_CANDIDATES:
     model     = AutoModelForSequenceClassification.from_pretrained(
         BASE_MODEL, attn_implementation='eager').to(device)
     optimizer = ManualAdamW(model.parameters(), lr=lr, weight_decay=0.01)
+    lr_best_f1, lr_best_state = -1, None
 
-    history = []
     for ep in range(EPOCHS):
         train_loss = train_epoch(model, train_loader, optimizer, cw_tensor)
         _, _, m    = evaluate_model(model, val_loader)
-        history.append({'LR':              lr,
-                        'Epoch':           ep + 1,
-                        'Training Loss':   round(train_loss, 6),
-                        'Validation Loss': m['val_loss'],
-                        'Accuracy':        m['accuracy'],
-                        'Macro F1':        m['macro_f1'],
-                        'Macro Precision': m['macro_precision'],
-                        'Macro Recall':    m['macro_recall']})
+        all_history.append({'LR': lr, 'Epoch': ep + 1,
+                            'Training Loss':   round(train_loss, 6),
+                            'Validation Loss': m['val_loss'],
+                            'Accuracy':        m['accuracy'],
+                            'Macro F1':        m['macro_f1'],
+                            'Macro Precision': m['macro_precision'],
+                            'Macro Recall':    m['macro_recall']})
         print(f'    epoch {ep+1}/{EPOCHS}  '
               f'train_loss={train_loss:.4f}  val_f1={m["macro_f1"]:.4f}', flush=True)
+        if m['macro_f1'] > lr_best_f1:
+            lr_best_f1    = m['macro_f1']
+            lr_best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
         if device.type == 'cuda': torch.cuda.synchronize()
         torch.cuda.empty_cache()
 
-    run_best = max(h['Macro F1'] for h in history)
-    if run_best > best_val_f1:
-        best_val_f1  = run_best
-        best_lr      = lr
-        best_state   = {k: v.cpu().clone() for k, v in model.state_dict().items()}
-        best_history = history
+    if lr_best_f1 > best_val_f1:
+        best_val_f1 = lr_best_f1
+        best_lr     = lr
+        best_state  = lr_best_state
 
     del model; gc.collect(); torch.cuda.empty_cache()
 
-print(f'\n  -> Best lr={best_lr}  best_val_macro_f1={best_val_f1:.4f}')
-print(f'\n── Training Progress (lr={best_lr}) ──')
-hist_df = pd.DataFrame(best_history)
-print(hist_df.to_string(index=False))
-hist_df.to_csv('results/roberta_da_history.csv', index=False)
+print(f'\n  -> Best LR={best_lr}  best_val_macro_f1={best_val_f1:.4f}')
+pd.DataFrame(all_history).to_csv('results/roberta_da_history.csv', index=False)
 print('Saved: results/roberta_da_history.csv')
 
-# ── Step 3: Evaluate adapted model on course test ────────────
+# ── STEP 3: Save DA model ────────────────────────────────────
 print('\n' + '='*60)
-print('STEP 3: Adapted model on course test set')
+print('STEP 3: Save domain-adapted model')
 print('='*60)
 
 adapted_model = AutoModelForSequenceClassification.from_pretrained(
@@ -255,40 +294,39 @@ adapted_model = AutoModelForSequenceClassification.from_pretrained(
 adapted_model.load_state_dict(best_state)
 adapted_model = adapted_model.to(device)
 
-adapt_preds, adapt_labels, _ = evaluate_model(adapted_model, test_loader)
-print(classification_report(adapt_labels, adapt_preds, target_names=LABELS))
-
-cm = confusion_matrix(adapt_labels, adapt_preds)
-plt.figure(figsize=(6, 5))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
-            xticklabels=LABELS, yticklabels=LABELS)
-plt.title('RoBERTa-HateXPlain + Domain Adaptation\nCourse Test Set')
-plt.xlabel('Predicted'); plt.ylabel('True')
-plt.tight_layout()
-plt.savefig('results/roberta_da_course_cm.png', dpi=150); plt.close()
-print('Saved: results/roberta_da_course_cm.png')
-
 os.makedirs(SAVE_DIR, exist_ok=True)
 adapted_model.save_pretrained(SAVE_DIR)
 tokenizer.save_pretrained(SAVE_DIR)
-print(f'Adapted model saved to: {SAVE_DIR}')
+print(f'DA model saved to: {SAVE_DIR}')
 
-adapt_f1_per = f1_score(adapt_labels, adapt_preds, average=None, zero_division=0)
-adapted_row = {
-    'Stage':        'After adaptation',
-    'Accuracy':     round(accuracy_score(adapt_labels, adapt_preds), 4),
-    'Macro F1':     round(f1_score(adapt_labels, adapt_preds, average='macro'), 4),
-    'F1 Normal':    round(adapt_f1_per[0], 4),
-    'F1 Offensive': round(adapt_f1_per[1], 4),
-    'F1 Hate':      round(adapt_f1_per[2], 4),
-}
+# ── STEP 4: Evaluate DA model on all three test sets ─────────
+print('\n' + '='*60)
+print('STEP 4: DA model evaluation on all three test sets')
+print('='*60)
+
+da_rows = [
+    eval_on_testset(adapted_model, hx_test,    'HateXPlain', 'results/roberta_da_hatexplain_cm.png'),
+    eval_on_testset(adapted_model, te_test,     'TweetEval',  'results/roberta_da_tweeteval_cm.png'),
+    eval_on_testset(adapted_model, course_test, 'Course',     'results/roberta_da_course_cm.png'),
+]
 del adapted_model; gc.collect(); torch.cuda.empty_cache()
 
-# ── Step 4: Before vs After comparison ──────────────────────
-print('\n' + '='*60)
-print('=== Before vs After Domain Adaptation (Course Test Set) ===')
-print('='*60)
-comparison = pd.DataFrame([baseline_row, adapted_row])
-print(comparison.to_string(index=False))
-comparison.to_csv('results/roberta_da_results.csv', index=False)
+# ── STEP 5: Summary comparison table ─────────────────────────
+print('\n' + '='*70)
+print('=== RoBERTa Domain Adaptation — Before vs After (all test sets) ===')
+print('='*70)
+
+for row in baseline_rows: row['Stage'] = 'Before DA (roberta_HateXPlain)'
+for row in da_rows:       row['Stage'] = f'After DA (best_lr={best_lr})'
+
+all_rows = []
+for b, a in zip(baseline_rows, da_rows):
+    all_rows.append(b); all_rows.append(a)
+
+summary_df = pd.DataFrame(all_rows)[
+    ['Stage', 'Test Set', 'Accuracy', 'Macro F1', 'Macro Precision', 'Macro Recall',
+     'Weighted F1', 'F1 Normal', 'F1 Offensive', 'F1 Hate']
+]
+print(summary_df.to_string(index=False))
+summary_df.to_csv('results/roberta_da_results.csv', index=False)
 print('\nSaved: results/roberta_da_results.csv')
