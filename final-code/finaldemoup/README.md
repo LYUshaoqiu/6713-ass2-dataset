@@ -26,3 +26,10 @@ python -m pip install torch transformers safetensors
 - `model/roberta_HateXPlain/`: base RoBERTa encoder files
 - `model/classifier_head.pt`: joint text-plus-scores classifier head
 - `submissions/`: created automatically after form submission
+
+
+
+Note that this file is missing model training parameters. The parameter address is below. You need to put the corresponding model folder into this directory to run it.
+Note that this file is missing model training parameters. The parameter address is below. You need to put the corresponding model folder into this directory to run it.
+https://drive.google.com/drive/folders/1YpIpBiy8YoJpq4W4gOkv0_hA4moGrqsD?usp=sharing
+
