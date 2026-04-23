@@ -162,8 +162,7 @@ class HateDataset(Dataset):
     def __len__(self): return len(self.texts)
 
     def __getitem__(self, idx):
-        enc = tokenizer(str(self.texts[idx]), padding='max_length', truncation=True,
-                        max_length=self.max_len, return_tensors='pt')
+        enc = tokenizer(str(self.texts[idx]), padding='max_length', truncation=True, max_length=self.max_len, return_tensors='pt')
         item = {'input_ids':      enc['input_ids'].squeeze(),
                 'attention_mask': enc['attention_mask'].squeeze(),
                 'label': torch.tensor(self.labels[idx], dtype=torch.long)}
@@ -185,8 +184,7 @@ def train_epoch(model, loader, optimizer, class_weights):
     bar = tqdm(loader, desc='  train', leave=False, ncols=90)
     for batch in bar:
         optimizer.zero_grad()
-        kwargs = {'input_ids':      batch['input_ids'].to(device),
-                  'attention_mask': batch['attention_mask'].to(device)}
+        kwargs = {'input_ids':      batch['input_ids'].to(device), 'attention_mask': batch['attention_mask'].to(device)}
         if 'token_type_ids' in batch:
             kwargs['token_type_ids'] = batch['token_type_ids'].to(device)
         out  = model(**kwargs)
@@ -210,8 +208,7 @@ def evaluate_model(model, loader):
     with torch.no_grad():
         for batch in tqdm(loader, desc='  eval ', leave=False, ncols=90):
             labs = batch['label'].to(device)
-            kwargs = {'input_ids':      batch['input_ids'].to(device),
-                      'attention_mask': batch['attention_mask'].to(device)}
+            kwargs = {'input_ids':      batch['input_ids'].to(device), 'attention_mask': batch['attention_mask'].to(device)}
             if 'token_type_ids' in batch:
                 kwargs['token_type_ids'] = batch['token_type_ids'].to(device)
 
@@ -221,19 +218,18 @@ def evaluate_model(model, loader):
             labels_all.extend(batch['label'].numpy())
     preds  = np.array(preds_all); labels = np.array(labels_all)
     return preds, labels, {
-        'val_loss':        round(float(np.mean(losses)), 6),
-        'accuracy':        round(accuracy_score(labels, preds), 6),
-        'macro_f1':        round(f1_score(labels, preds, average='macro'), 6),
+        'val_loss': round(float(np.mean(losses)), 6),
+        'accuracy': round(accuracy_score(labels, preds), 6),
+        'macro_f1': round(f1_score(labels, preds, average='macro'), 6),
         'macro_precision': round(precision_score(labels, preds, average='macro', zero_division=0), 6),
-        'macro_recall':    round(recall_score(labels, preds, average='macro', zero_division=0), 6),
+        'macro_recall': round(recall_score(labels, preds, average='macro', zero_division=0), 6),
     }
 
 def eval_on_testset(model, test_df, test_name, confusion_matrix_path):
     #Evaluate the model in a  one test dataset
     #save a confusion matrix figure and return summary metrics
 
-    loader = DataLoader(HateDataset(test_df['text'], test_df['label']),
-                        batch_size=16, num_workers=0)
+    loader = DataLoader(HateDataset(test_df['text'], test_df['label']), batch_size=16, num_workers=0)
     preds, labels, _ = evaluate_model(model, loader)
     print(f'\n── Test: {test_name} ({len(test_df)} samples) ──')
     print(classification_report(labels, preds, target_names=LABELS))
@@ -265,9 +261,7 @@ def eval_on_testset(model, test_df, test_name, confusion_matrix_path):
     }
 
 # ── STEP 1: Baseline — base model on all three test sets ────
-print('\n' + '='*60)
 print('STEP 1: Baseline — bert_HateXPlain (before DA) on all test sets')
-print('='*60)
 
 base_model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL).to(device)
 baseline_model_results = [
@@ -279,9 +273,7 @@ del base_model; gc.collect(); torch.cuda.empty_cache()
 
 
 # ── STEP 2: Domain adaptation training ──────────────────────
-print('\n' + '='*60)
 print('STEP 2: Domain adaptation fine-tuning on course data')
-print('='*60)
 
 
 # Candidate learning rates to try
@@ -334,9 +326,7 @@ pd.DataFrame(all_history).to_csv('results/bert_da_history.csv', index=False)
 print('Saved: results/bert_da_history.csv')
 
 # ── STEP 3: Save DA model ────────────────────────────────────
-print('\n' + '='*60)
 print('STEP 3: Save domain-adapted model')
-print('='*60)
 
 adapted_model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
 adapted_model.load_state_dict(best_state)
@@ -348,24 +338,20 @@ tokenizer.save_pretrained(SAVE_DIR)
 print(f'DA model saved to: {SAVE_DIR}')
 
 # ── STEP 4: Evaluate DA model on all three test sets ─────────
-print('\n' + '='*60)
 print('STEP 4: DA model evaluation on all three test sets')
-print('='*60)
+
 
 adapted_model_results = [
     eval_on_testset(adapted_model, hatexplain_test_df,    'HateXPlain', 'results/bert_da_hatexplain_cm.png'),
     eval_on_testset(adapted_model, tweeteval_test_df,     'TweetEval',  'results/bert_da_tweeteval_cm.png'),
-    eval_on_testset(adapted_model, course_test, 'Course',     'results/bert_da_course_cm.png'),
+    eval_on_testset(adapted_model, course_test, 'Course',  'results/bert_da_course_cm.png'),
 ]
 del adapted_model; gc.collect(); torch.cuda.empty_cache()
 
 # ── STEP 5: Summary comparison table ─────────────────────────
-print('\n' + '='*70)
 print('=== BERT Domain Adaptation — Before vs After (all test sets) ===')
-print('='*70)
-
 for row in baseline_model_results: row['Stage'] = 'Before DA (bert_HateXPlain)'
-for row in adapted_model_results:       row['Stage'] = f'After DA (best_lr={best_lr})'
+for row in adapted_model_results:  row['Stage'] = f'After DA (best_lr={best_lr})'
 
 all_rows = []
 for b, a in zip(baseline_model_results, adapted_model_results):
@@ -373,8 +359,7 @@ for b, a in zip(baseline_model_results, adapted_model_results):
 
 
 summary_df = pd.DataFrame(all_rows)[
-    ['Stage','Test Set','Accuracy','Macro F1','Macro Precision','Macro Recall',
-     'Weighted F1','F1 Normal','F1 Offensive','F1 Hate']
+    ['Stage','Test Set','Accuracy','Macro F1','Macro Precision','Macro Recall', 'Weighted F1','F1 Normal','F1 Offensive','F1 Hate']
 ]
 print(summary_df.to_string(index=False))
 summary_df.to_csv('results/bert_da_results.csv', index=False)
