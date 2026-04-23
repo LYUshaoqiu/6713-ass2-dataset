@@ -66,12 +66,12 @@ os.makedirs('results', exist_ok=True)
 os.makedirs('models',  exist_ok=True)
 
 # ── Paths ──────────────────────────────────────────────────
-BASE_MODEL   = 'models/roberta_HateXPlain'   # output of step1_finetune_all.py (NOT modified)
+BASE_MODEL = 'models/roberta_HateXPlain'   # output of step1_finetune_all.py (NOT modified)
 COURSE_TRAIN = '../dataset/6713-ass2-dataset/ourdataset/course_reviews_cleaned.csv'
 COURSE_TEST  = '../dataset/6713-ass2-dataset/ourdataset/course_test_300.csv'
-HX_DIR       = '../dataset/6713-ass2-dataset/HateXPlain_data/'
-TE_DIR       = '../dataset/6713-ass2-dataset/Tweeteval三类分/'
-SAVE_DIR     = 'models/roberta_da_course'
+HX_DIR = '../dataset/6713-ass2-dataset/HateXPlain_data/'
+TE_DIR = '../dataset/6713-ass2-dataset/Tweeteval三类分/'
+SAVE_DIR = 'models/roberta_da_course'
 
 
 
@@ -182,7 +182,7 @@ def train_epoch(model, loader, optimizer, cw):
     bar = tqdm(loader, desc='  train', leave=False, ncols=90)
     for batch in bar:
         optimizer.zero_grad()
-        out  = model(input_ids      = batch['input_ids'].to(device),
+        out  = model(input_ids = batch['input_ids'].to(device),
                      attention_mask = batch['attention_mask'].to(device))
         loss = loss_fct(out.logits, batch['label'].to(device))
         loss.backward()
@@ -203,7 +203,7 @@ def evaluate_model(model, loader):
     with torch.no_grad():
         for batch in tqdm(loader, desc='  eval ', leave=False, ncols=90):
             labs = batch['label'].to(device)
-            out  = model(input_ids      = batch['input_ids'].to(device),
+            out  = model(input_ids = batch['input_ids'].to(device),
                          attention_mask = batch['attention_mask'].to(device))
             losses.append(loss_fct(out.logits, labs).item())
             preds_all.extend(out.logits.argmax(dim=-1).cpu().numpy())
@@ -271,12 +271,12 @@ print('STEP 2: Domain adaptation fine-tuning on course data')
 print('='*60)
 
 LR_CANDIDATES = [5e-6, 1e-5, 2e-5]
-BATCH_SIZE    = 8
-EPOCHS        = 5
+BATCH_SIZE = 8
+EPOCHS = 5
 
 train_loader = DataLoader(HateDataset(course_train['text'], course_train['label']),
                           batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
-val_loader   = DataLoader(HateDataset(course_val['text'],   course_val['label']),
+val_loader = DataLoader(HateDataset(course_val['text'],   course_val['label']),
                           batch_size=BATCH_SIZE, num_workers=0)
 
 best_lr, best_val_f1, best_state, all_history = None, -1, None, []
@@ -284,14 +284,14 @@ best_lr, best_val_f1, best_state, all_history = None, -1, None, []
 for lr in LR_CANDIDATES:
     print(f'\n  lr={lr}', flush=True)
     # Always reload from BASE_MODEL for fair LR comparison
-    model     = AutoModelForSequenceClassification.from_pretrained(
+    model = AutoModelForSequenceClassification.from_pretrained(
         BASE_MODEL, attn_implementation='eager').to(device)
     optimizer = ManualAdamW(model.parameters(), lr=lr, weight_decay=0.01)
     lr_best_f1, lr_best_state = -1, None
 
     for ep in range(EPOCHS):
         train_loss = train_epoch(model, train_loader, optimizer, cw_tensor)
-        _, _, m    = evaluate_model(model, val_loader)
+        _, _, m = evaluate_model(model, val_loader)
         all_history.append({'LR': lr, 'Epoch': ep + 1,
                             'Training Loss':   round(train_loss, 6),
                             'Validation Loss': m['val_loss'],
@@ -302,14 +302,14 @@ for lr in LR_CANDIDATES:
         print(f'    epoch {ep+1}/{EPOCHS}  '
               f'train_loss={train_loss:.4f}  val_f1={m["macro_f1"]:.4f}', flush=True)
         if m['macro_f1'] > lr_best_f1:
-            lr_best_f1    = m['macro_f1']
+            lr_best_f1 = m['macro_f1']
             lr_best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
         if device.type == 'cuda': torch.cuda.synchronize()
         torch.cuda.empty_cache()
 
     if lr_best_f1 > best_val_f1:
         best_val_f1 = lr_best_f1
-        best_lr     = lr
+        best_lr = lr
         best_state  = lr_best_state
 
     del model; gc.collect(); torch.cuda.empty_cache()

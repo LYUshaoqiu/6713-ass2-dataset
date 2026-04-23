@@ -66,12 +66,12 @@ os.makedirs('results', exist_ok=True)
 os.makedirs('models',  exist_ok=True)
 
 # ── Paths ──────────────────────────────────────────────────
-BASE_MODEL   = 'models/bert_HateXPlain'
+BASE_MODEL = 'models/bert_HateXPlain'
 COURSE_TRAIN = '../dataset/6713-ass2-dataset/ourdataset/course_reviews_cleaned.csv'
 COURSE_TEST  = '../dataset/6713-ass2-dataset/ourdataset/course_test_300.csv'
-HX_DIR       = '../dataset/6713-ass2-dataset/HateXPlain_data/'
-TE_DIR       = '../dataset/6713-ass2-dataset/Tweeteval三类分/'
-SAVE_DIR     = 'models/bert_da_course'
+HX_DIR = '../dataset/6713-ass2-dataset/HateXPlain_data/'
+TE_DIR = '../dataset/6713-ass2-dataset/Tweeteval三类分/'
+SAVE_DIR = 'models/bert_da_course'
 
 LABELS = ['Normal', 'Offensive', 'Hate']
 
@@ -286,26 +286,26 @@ print('='*60)
 
 # Candidate learning rates to try
 LR_CANDIDATES = [5e-6, 1e-5, 2e-5]
-BATCH_SIZE    = 8
-EPOCHS        = 5
+BATCH_SIZE = 8
+EPOCHS = 5
 
 train_loader = DataLoader(HateDataset(course_train['text'], course_train['label']),
                           batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
-val_loader   = DataLoader(HateDataset(course_val['text'],   course_val['label']),
+val_loader = DataLoader(HateDataset(course_val['text'],   course_val['label']),
                           batch_size=BATCH_SIZE, num_workers=0)
 
 best_lr, best_val_f1, best_state, all_history = None, -1, None, []
 
 for lr in LR_CANDIDATES:
     print(f'\n  lr={lr}', flush=True)
-    model     = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL).to(device)
+    model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL).to(device)
     optimizer = ManualAdamW(model.parameters(), lr=lr, weight_decay=0.01)
     lr_best_f1, lr_best_state = -1, None
 
     for ep in range(EPOCHS):
 
         train_loss = train_epoch(model, train_loader, optimizer, class_weight_tensor)
-        _, _, m    = evaluate_model(model, val_loader)
+        _, _, m = evaluate_model(model, val_loader)
         all_history.append({'LR': lr, 'Epoch': ep + 1,
                             'Training Loss':   round(train_loss, 6),
                             'Validation Loss': m['val_loss'],
@@ -316,14 +316,14 @@ for lr in LR_CANDIDATES:
         print(f'    epoch {ep+1}/{EPOCHS}  '
               f'train_loss={train_loss:.4f}  val_f1={m["macro_f1"]:.4f}', flush=True)
         if m['macro_f1'] > lr_best_f1:
-            lr_best_f1    = m['macro_f1']
+            lr_best_f1 = m['macro_f1']
             lr_best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
         if device.type == 'cuda': torch.cuda.synchronize()
         torch.cuda.empty_cache()
 
     if lr_best_f1 > best_val_f1:
         best_val_f1 = lr_best_f1
-        best_lr     = lr
+        best_lr = lr
         best_state  = lr_best_state
 
     del model; gc.collect(); torch.cuda.empty_cache()
