@@ -1,30 +1,29 @@
-"""
-This program does 5 things:
 
-1. Load a RoBERTa model that was already trained on HateXPlain
-2. Test this original model on three datasets
-3. Continue training the model on our course dataset
-4. Save the new adapted model
-5. Test the adapted model again and compare the results
+#This program does 5 things:
 
-Our goal is to see whether extra training on the course dataset can improve the model's performance.
-"""
+#1. Load a RoBERTa model that was already trained on HateXPlain
+#2. Test this original model on three datasets
+#3. Continue training the model on our course dataset
+#4. Save the new adapted model
+#5. Test the adapted model again and compare the results
 
-# Step 1: load all datasets
-# We use:
-# 1. the course dataset for extra training
-# 2. three test sets for evaluation
+#Our goal is to see whether extra training on the course dataset can improve the model's performance.
 
-# Step 2: test the original model
-# this helps us see the model performance before adaptation
+#Step 1: load all datasets
+#We use:
+#1. the course dataset for extra training
+#2. three test sets for evaluation
 
-# Step 3: continue training on the course dataset
-# we try many learning rates and keep the best model
+#Step 2: test the original model
+#this helps us see the model performance before adaptation
 
-# Step 4: save the adapted model
+#Step 3: continue training on the course dataset
+#we try many learning rates and keep the best model
 
-# Step 5: test the adapted model again
-# then we compare before and after results
+#Step 4: save the adapted model
+
+#Step 5: test the adapted model again
+#then we compare before and after results
 import os, gc
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:128'
@@ -90,7 +89,7 @@ course_df.reset_index(drop=True, inplace=True)
 course_train, course_val = train_test_split(
     course_df, test_size=0.2, random_state=42, stratify=course_df['label'])
 course_train = course_train.reset_index(drop=True)
-course_val   = course_val.reset_index(drop=True)
+course_val = course_val.reset_index(drop=True)
 
 # ── Load all three test sets ────────────────────────────────
 course_test = pd.read_csv(COURSE_TEST)
@@ -113,8 +112,7 @@ for lbl, cnt in course_train['label'].value_counts().sort_index().items():
     print(f'  {LABELS[lbl]}: {cnt} ({cnt/len(course_train)*100:.1f}%)')
 
 # ── Class weights ───────────────────────────────────────────
-class_weight_values   = compute_class_weight('balanced', classes=np.array([0, 1, 2]),
-                                  y=course_train['label'].values)
+class_weight_values = compute_class_weight('balanced', classes=np.array([0, 1, 2]), y=course_train['label'].values)
 
 cw_tensor = torch.tensor(class_weight_values, dtype=torch.float)
 print(f'\nClass weights: Normal={class_weight_values[0]:.3f}  '
@@ -174,10 +172,10 @@ class HateDataset(Dataset):
 # ── Train / Evaluate ────────────────────────────────────────
 def train_epoch(model, loader, optimizer, cw):
 
-    """
-    train the model for one full pass by the training data
-    return the average training loss
-    """
+    
+    #train the model for one full pass by the training data
+    #return the average training loss
+    
     model.train()
     total_loss = 0
     loss_fct = torch.nn.CrossEntropyLoss(weight=cw.to(device))
@@ -195,10 +193,10 @@ def train_epoch(model, loader, optimizer, cw):
     return total_loss / len(loader)
 
 def evaluate_model(model, loader):
-    """
-    run model on a dataset directly
-    return predictions, true labels, and evaluation scores
-    """
+    
+    #run model on a dataset directly
+    #return predictions, true labels, and evaluation scores
+    
     model.eval()
     preds_all, labels_all, losses = [], [], []
     loss_fct = torch.nn.CrossEntropyLoss()
@@ -220,10 +218,10 @@ def evaluate_model(model, loader):
     }
 
 def eval_on_testset(model, test_df, test_name, cm_path):
-    """
-    evaluate the model in one test dataset
-    save a confusion matrix figure and return summary metrics
-    """
+
+    #evaluate the model in one test dataset
+    #save a confusion matrix figure and return summary metrics
+
    
 
     loader = DataLoader(HateDataset(test_df['text'], test_df['label']),

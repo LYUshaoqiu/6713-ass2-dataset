@@ -1,31 +1,28 @@
-"""
-This program does 5 things:
+#This program does 5 things:
 
-1. Load a BERT model that was already trained on HateXPlain
-2. Test this original model on three datasets
-3. Continue training the model on our course dataset
-4. Save the new adapted model
-5. Test the adapted model again and compare the results
+#1. Load a RoBERTa model that was already trained on HateXPlain
+#2. Test this original model on three datasets
+#3. Continue training the model on our course dataset
+#4. Save the new adapted model
+#5. Test the adapted model again and compare the results
 
-Our goal is to see whether extra training on the course dataset can improve the model's performance.
-"""
+#Our goal is to see whether extra training on the course dataset can improve the model's performance.
 
-# Step 1: load all datasets
-# We use:
-# 1. the course dataset for extra training
-# 2. three test sets for evaluation
+#Step 1: load all datasets
+#We use:
+#1. the course dataset for extra training
+#2. three test sets for evaluation
 
-# Step 2: test the original model
-# this helps us see the model performance before adaptation
+#Step 2: test the original model
+#this helps us see the model performance before adaptation
 
-# Step 3: continue training on the course dataset
-# we try manuy learning rates and keep the best model
+#Step 3: continue training on the course dataset
+#we try many learning rates and keep the best model
 
-# Step 4: save the adapted model
+#Step 4: save the adapted model
 
-# Step 5: test the adapted model again
-# then we compare before and after results
-
+#Step 5: test the adapted model again
+#then we compare before and after results
 
 
 import os, gc
@@ -94,7 +91,7 @@ course_df.reset_index(drop=True, inplace=True)
 course_train, course_val = train_test_split(
     course_df, test_size=0.2, random_state=42, stratify=course_df['label'])
 course_train = course_train.reset_index(drop=True)
-course_val   = course_val.reset_index(drop=True)
+course_val  = course_val.reset_index(drop=True)
 
 # ── Load all three test sets ────────────────────────────────
 course_test = pd.read_csv(COURSE_TEST)
@@ -117,8 +114,8 @@ for lbl, cnt in course_train['label'].value_counts().sort_index().items():
     print(f'  {LABELS[lbl]}: {cnt} ({cnt/len(course_train)*100:.1f}%)')
 
 # ── Class weights ───────────────────────────────────────────
-class_weight_values   = compute_class_weight('balanced', classes=np.array([0, 1, 2]),
-                                  y=course_train['label'].values)
+class_weight_values = compute_class_weight('balanced', classes=np.array([0, 1, 2]), y=course_train['label'].values)
+
 class_weight_tensor = torch.tensor(class_weight_values, dtype=torch.float)
 print(f'\nClass weights: Normal={class_weight_values[0]:.3f}  '
       f'Offensive={class_weight_values[1]:.3f}  Hate={class_weight_values[2]:.3f}')
@@ -156,10 +153,9 @@ class ManualAdamW:
 
 # ── Dataset ─────────────────────────────────────────────────
 class HateDataset(Dataset):
-    """
-    a simple dataset class
-    it stores text samples and their labels, and tokenizes each text when it is requested
-    """
+   # a simple dataset class
+   # it stores text samples and their labels, and tokenizes each text when it is requested
+
     def __init__(self, texts, labels, max_len=128):
         self.texts = list(texts); self.labels = list(labels); self.max_len = max_len
 
@@ -178,10 +174,10 @@ class HateDataset(Dataset):
 # ── Train / Evaluate ────────────────────────────────────────
 def train_epoch(model, loader, optimizer, class_weights):
 
-    """
-    train the model for one full pass by the training data
-    Return the average training loss
-    """
+
+   # train the model for one full pass by the training data
+    #Return the average training loss
+
 
     model.train()
     total_loss = 0
@@ -205,10 +201,9 @@ def train_epoch(model, loader, optimizer, class_weights):
 
 def evaluate_model(model, loader):
 
-    """
-    run  model on a dataset directly
-    return predictions, true labels, and evaluation scores
-    """
+    #run  model on a dataset directly
+    #return predictions, true labels, and evaluation scores
+    
     model.eval()
     preds_all, labels_all, losses = [], [], []
     loss_fct = torch.nn.CrossEntropyLoss()
@@ -234,10 +229,9 @@ def evaluate_model(model, loader):
     }
 
 def eval_on_testset(model, test_df, test_name, confusion_matrix_path):
-    """
-    Evaluate the model in a  one test dataset
-    save a confusion matrix figure and return summary metrics
-    """
+    #Evaluate the model in a  one test dataset
+    #save a confusion matrix figure and return summary metrics
+
     loader = DataLoader(HateDataset(test_df['text'], test_df['label']),
                         batch_size=16, num_workers=0)
     preds, labels, _ = evaluate_model(model, loader)
@@ -376,7 +370,7 @@ for row in adapted_model_results:       row['Stage'] = f'After DA (best_lr={best
 all_rows = []
 for b, a in zip(baseline_model_results, adapted_model_results):
     all_rows.append(b); all_rows.append(a)
-    
+
 
 summary_df = pd.DataFrame(all_rows)[
     ['Stage','Test Set','Accuracy','Macro F1','Macro Precision','Macro Recall',
