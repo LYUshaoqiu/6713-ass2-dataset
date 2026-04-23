@@ -43,25 +43,18 @@ if disable_progress_bars is not None:
 
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_DIR = BASE_DIR / "model" / "roberta_HateXPlain"
+MODEL_DIR = BASE_DIR / "model" / "roberta_da_course"
 CLASSIFIER_HEAD_PATH = BASE_DIR / "model" / "classifier_head.pt"
+SUMMARY_PATH = BASE_DIR / "model" / "summary.json"
 SUBMISSIONS_PATH = BASE_DIR / "submissions" / "course_survey_submissions.jsonl"
+MODEL_NAME = "roberta_da_course_text_plus_scores_joint"
 
-SCORE_MEANS = {
-    "difficulty": 3.3686635944700463,
-    "workload": 3.52073732718894,
-    "teaching_quality": 2.7557603686635943,
-    "recommendation": 2.705069124423963,
-}
+with SUMMARY_PATH.open("r", encoding="utf-8") as handle:
+    SUMMARY = json.load(handle)
 
-SCORE_STDS = {
-    "difficulty": 0.9418750600620038,
-    "workload": 0.9459023488625237,
-    "teaching_quality": 1.2220238926427445,
-    "recommendation": 1.4127862851074513,
-}
-
-SCORE_COLUMNS = ["difficulty", "workload", "teaching_quality", "recommendation"]
+SCORE_COLUMNS = list(SUMMARY["score_columns"])
+SCORE_MEANS = dict(SUMMARY["score_normalization"]["means"])
+SCORE_STDS = dict(SUMMARY["score_normalization"]["stds"])
 WARNING_THRESHOLD = 0.5
 BLOCK_THRESHOLD = 0.8
 
@@ -1163,7 +1156,7 @@ class JointModerationModel:
             "probability_normal": round(1.0 - probability_hate, 4),
             "source": "joint_model_backend",
             "message": message,
-            "model_name": "roberta_text_plus_scores_joint",
+            "model_name": MODEL_NAME,
         }
 
 
